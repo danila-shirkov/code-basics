@@ -1,6 +1,6 @@
 [![github action status](https://github.com/hexlet-basics/hexlet-basics/workflows/push/badge.svg)](https://actions-badge.atrox.dev/hexlet-basics/hexlet-basics/goto)
 
-# hexlet-basics
+# code-basics
 
 ## Setup
 
@@ -18,14 +18,14 @@
 
 **Clone project**
 
-Some lsp servers are fully workable only when the root dir is the same inside and outside the container. That is why we set WORKDIR to `/opt/projects/hexlet-basics`. So, if it is possible, clone this project to that directory.
+Some lsp servers are fully workable only when the root dir is the same inside and outside the container. That is why we set WORKDIR to `/opt/projects/code-basics`. So, if it is possible, clone this project to that directory.
 
 **Run**
 
 ```bash
 make project-setup
 make compose # run server
-# open code-basics.test
+# open basicos.codica.la
 
 make app-test # run tests
 
@@ -53,7 +53,6 @@ make local-cluster-setup
   make next-tag
   ```
 
-* Wait notification about ready tag in Slack channel `#sideprojects-code-auto` or wait [Github Actions](https://github.com/hexlet-basics/hexlet-basics/actions/workflows/release.yml)
 * Change version in [k8s/hb-app-chart/values.yaml](/k8s/hb-app-chart/values.yaml) and then:
 
   ```bash
@@ -62,6 +61,6 @@ make local-cluster-setup
 
 ---
 
-This repository is created and maintained by the team and the community of Codica LA, an educational project. [Contact us](mailto:hola@codica.la).
+This repository (spanish version) is forked and maintained by the team and the community of Codica LA, an educational project. [Contact us](mailto:hola@codica.la).
 
 
