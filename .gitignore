@@ -75,3 +75,10 @@ routes.d.ts
 
 public/sitemaps/*
 public/~partytown
+
+.docker-compose.yml.swp
+letsencrypt/
+services/caddy/.chain.pem.swp
+services/caddy/cert.pem
+services/caddy/chain.pem
+services/caddy/privkey.pem@@@END

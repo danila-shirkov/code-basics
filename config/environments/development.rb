@@ -92,7 +92,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name: 'codica.latam.services@gmail.com',
+    user_name: 'no-contestar@codica.la',
     password: ENV.fetch('SMTP_PASSWORD', nil),
     address: 'smtp-pulse.com',
     port: 587,

@@ -32,6 +32,8 @@ services:
       context: .
       dockerfile: Dockerfile
     command: "make start"
+    ports:
+      - "127.0.0.1:3000:3000"
     env_file:
       - .env
     volumes:
@@ -99,16 +101,16 @@ services:
       - app_tmp:${WORKING_DIRECTORY}/tmp
       - .:${WORKING_DIRECTORY}
 
-  webserver:
-    image: caddy:2.6
-    ports:
-      - "443:443"
-      - "80:80"
-    volumes:
-      - "./services/caddy:/etc/caddy"
-      - "./public:/etc/caddy/public"
-      - caddy_data:/data
-      - caddy_config:/config
+        #  webserver:
+        #  image: caddy:2.6
+        #  ports:
+        #   - "33443:443"
+        #   - "3380:80"
+        #    volumes:
+        #  - "./services/caddy:/etc/caddy"
+        #   - "./public:/etc/caddy/public"
+        #   - caddy_data:/data
+        #   - caddy_config:/config
     # depends_on:
     #   - web
 
