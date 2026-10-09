@@ -1,7 +1,8 @@
 .mt-sm-5.mb-5.pb-5
   = render 'hero'
 
-- unless signed_in?
+/ NOTE: One Tap без GOOGLE_CLIENT_ID (пустой data-client_id) только даёт ошибку в консоли браузера
+- if !signed_in? && configus.google.client.id.present?
   = render partial: 'web/shared/google_one_tap'
 
 .mb-5.pb-5

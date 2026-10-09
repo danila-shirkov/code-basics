@@ -63,6 +63,14 @@ class Web::HomeControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'structured data describes the organization of this site, not Hexlet' do
+    get root_url
+    assert_response :success
+    assert_not_includes response.body, 'Helsinki'
+    assert_not_includes response.body, 'FI26641607'
+    assert_includes response.body, 'codica.la'
+  end
+
   test 'single locale: hreflang points only to the default locale' do
     AppHost.stub :single_locale?, true do
       get '/'

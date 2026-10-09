@@ -1,0 +1,8 @@
+---
+
+es:
+  # Названия категорий курсов на испанском: в таблице language_categories есть только name_ru и name_en,
+  # поэтому на испанском сайте на главной показывался английский «Programming / Layouting»
+  language_categories:
+    programming: Programación
+    layouting: Maquetación

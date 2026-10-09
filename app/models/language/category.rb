@@ -18,6 +18,10 @@ class Language::Category < ApplicationRecord
   has_many :blog_posts, through: :languages, dependent: :restrict_with_exception
 
   def name
+    # в таблице только name_ru и name_en; для остальных локалей (es) названия берём из переводов language_categories.<slug>
+    translated = I18n.t("language_categories.#{slug}", default: '')
+    return translated if translated.present?
+
     respond_to?("name_#{I18n.locale}") ? send("name_#{I18n.locale}") : name_en
   end
 
