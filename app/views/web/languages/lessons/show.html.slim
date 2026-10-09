@@ -1,8 +1,8 @@
 = content_for :meta do
-  - I18n.available_locales.each do |locale|
+  - AppHost.served_locales.each do |locale|
     - if locale == I18n.locale || @lesson_version.infos.exists?(locale: locale)
       link rel='alternate' hreflang=locale href=language_lesson_url(resource_language.slug, @lesson.slug, locale: AppHost.locale_for_url(locale))
-  link rel='alternate' hreflang='x-default' href=url_for(only_path: false, locale: AppHost.locale_for_url(:ru))
+  link rel='alternate' hreflang='x-default' href=url_for(only_path: false, locale: AppHost.locale_for_url(I18n.default_locale))
 
 .row.x-h-md-100.g-2
   .col-12.col-md-6.col-lg-5.x-h-md-100.mb-3.mb-md-0.position-relative

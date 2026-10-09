@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 ENV['RAILS_ENV'] ||= 'test'
+# Тесты работают в многоязычном режиме (URL с /en, /ru); поведение одной локали проверяется точечно через AppHost.stub(:single_locale?, true)
+ENV['SINGLE_LOCALE'] ||= 'false'
 require_relative '../config/environment'
 require 'rails/test_help'
 

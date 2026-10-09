@@ -20,6 +20,16 @@ Rails.application.routes.draw do
     match '/500', to: 'errors#server_error', via: :all
   end
 
+  # Экземпляр с одной локалью (AppHost.single_locale?): /en, /ru, /es отдают ту же страницу, что и без префикса, —
+  # это дубли для поисковиков. GET/HEAD на адреса с префиксом локали получают 301 на канонический адрес без префикса
+  # (query сохраняется). Проверка идёт на каждый запрос, SINGLE_LOCALE=false выключает редиректы.
+  get '/:locale(/*path)', locale: /en|ru|es/, format: false,
+                          constraints: ->(_request) { AppHost.single_locale? },
+                          to: redirect(301) { |params, request|
+                            target = params[:path].present? ? "/#{params[:path]}" : '/'
+                            request.query_string.present? ? "#{target}?#{request.query_string}" : target
+                          }
+
   scope '(:locale)', locale: /en|ru|es/ do
     namespace :api do
       resources :languages, only: %i[index show] do

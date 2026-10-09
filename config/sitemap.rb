@@ -3,8 +3,10 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.create_index = true
 SitemapGenerator::Sitemap.max_sitemap_links = 45_000
+# Главная добавляется ниже явно: так она попадает в карту один раз
+SitemapGenerator::Sitemap.include_root = false
 
-if Rails.env.production?
+if AppHost.sitemap_in_bucket?
   SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
     configus.sitemap.bucket.name,
     **configus.sitemap.bucket.credentials
@@ -12,12 +14,17 @@ if Rails.env.production?
 
   SitemapGenerator::Sitemap.compress = true
 else
+  # без бакета карта лежит файлами в public/sitemaps/<локаль>/ (sitemap.xml и файлы групп)
   SitemapGenerator::Sitemap.compress = false
 end
 
 module SitemapGeneratorHelper
+  # hreflang для карты: только локали, которые обслуживает экземпляр (AppHost.served_locales);
+  # x-default ведёт на локаль по умолчанию. Для одной локали альтернатив нет вовсе.
   def build_alternates(options)
-    existed_in_locales = I18n.available_locales.filter do |locale|
+    return [] if AppHost.served_locales.size < 2
+
+    existed_in_locales = AppHost.served_locales.filter do |locale|
       options[:current] == locale || options[:check_exists].call(locale)
     end
 
@@ -25,11 +32,7 @@ module SitemapGeneratorHelper
       { href: options[:url].call(AppHost.locale_for_url(locale)), lang: locale }
     end
 
-    if alternates.size == 1
-      alternates << { href: options[:url].call(AppHost.locale_for_url(options[:current])), lang: :'x-default' }
-    elsif alternates.size > 1
-      alternates << { href: options[:url].call(:ru), lang: :'x-default' }
-    end
+    alternates << { href: options[:url].call(AppHost.locale_for_url(I18n.default_locale)), lang: :'x-default' } if alternates.size > 1
 
     alternates
   end
@@ -37,12 +40,14 @@ end
 
 SitemapGenerator::Interpreter.include SitemapGeneratorHelper
 
-I18n.available_locales.each do |current_locale|
+AppHost.served_locales.each do |current_locale|
   I18n.with_locale(current_locale) do
     SitemapGenerator::Sitemap.sitemaps_path = "sitemaps/#{current_locale}/"
     SitemapGenerator::Sitemap.default_host = root_url
 
     SitemapGenerator::Sitemap.create do
+      add root_path(locale: AppHost.locale_for_url(current_locale)), changefreq: :daily, priority: 1.0
+
       group(filename: :languages) do
         scope = Language.with_progress(:completed).joins(current_version: :infos)
         scope.merge(Language::Version::Info.with_locale).find_each do |language|
