@@ -35,12 +35,13 @@ class Web::HomeController < Web::ApplicationController
       canonical: root_url,
       image_src: view_context.asset_url('logo.png'),
       twitter: {
-        card: 'summary',
-        site: '@hexlet_io'
+        card: 'summary' # NOTE: twitter:site с аккаунтом Hexlet убран — у Códica его нет
       },
       og: {
         title: t('.title'),
         type: 'website',
+        description: t('.meta_description'),
+        site_name: 'Code Basics',
         url: root_url,
         image: view_context.asset_url('logo.png')
       }

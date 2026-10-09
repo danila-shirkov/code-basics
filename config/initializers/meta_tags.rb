@@ -4,14 +4,16 @@
 MetaTags.configure do |config|
   # How many characters should the title meta tag have at most. Default is 70.
   # Set to nil or 0 to remove limits.
-  # config.title_limit = 70
+  # NOTE: лимит 70 вместе с « | CodeBasics» обрезал названия курсов на середине («…principiantes: 72»), поэтому шире
+  config.title_limit = 100
 
   # When true, site title will be truncated instead of title. Default is false.
   # config.truncate_site_title_first = false
 
   # Maximum length of the page description. Default is 300.
   # Set to nil or 0 to remove limits.
-  # config.description_limit = 300
+  # NOTE: страховочное ограничение (в поисковой выдаче видно ≈155–160 символов); основные тексты сокращает MetaDescription
+  config.description_limit = 200
 
   # Maximum length of the keywords meta tag. Default is 255.
   # config.keywords_limit = 255

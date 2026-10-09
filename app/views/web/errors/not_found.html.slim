@@ -1,9 +1,8 @@
 = content_for :meta do
-  meta content='webiste' property='og:type'
+  meta content='noindex' name='robots'
+  meta content='website' property='og:type'
   meta content=title property='og:title'
-  meta content=root_url property='og:url'
   meta content=image_url('logo.png') property='og:image'
-  link rel='canonical' href=root_url
   meta content=t('.meta_description') property='og:description'
   meta content=t('.meta_description') name='description'
   meta content="#{I18n.locale}" property='og:locale'

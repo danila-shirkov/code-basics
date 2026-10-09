@@ -35,8 +35,9 @@ class Web::LanguagesController < Web::ApplicationController
 
     human_language_header = [@language.current_version.name, @language.learn_as.text].join(' ')
     @header = @language_version_info.header || human_language_header
-    title = @language_version_info.title || @header
-    description = @language_version_info.seo_description || @language_version_info.description
+    # squish: в БД/YAML значения приходят с переводом строки в конце, он попадал в og:title, description и JSON-LD
+    title = (@language_version_info.title || @header).to_s.squish
+    description = (@language_version_info.seo_description || @language_version_info.description).to_s.squish
 
     seo_tags = {
       title: title,

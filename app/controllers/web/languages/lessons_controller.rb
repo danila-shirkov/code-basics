@@ -4,12 +4,14 @@ class Web::Languages::LessonsController < Web::Languages::ApplicationController
   before_action :authenticate_user!, only: [:next_lesson]
 
   def show
-    @lesson = resource_language.lessons.find_by(slug: params[:id])
-    unless @lesson
-      f(:lesson_not_found, type: :info)
-      redirect_to language_path(resource_language.slug)
+    # AMP-версии уроков не поддерживаем (невалидны, чужой счётчик, Google не требует): отдаём 301 на обычную страницу
+    if params[:format] == 'amp'
+      redirect_to language_lesson_path(params[:language_id], params[:id], format: nil), status: :moved_permanently
       return
     end
+
+    # Несуществующий урок — настоящая 404 (раньше был 302 на страницу курса, для поисковиков «мягкая» ошибка)
+    @lesson = resource_language.lessons.find_by!(slug: params[:id])
 
     @lesson_version = resource_language.current_lesson_versions.find_by!(lesson: @lesson)
     @info = @lesson_version.infos.with_locale.sole
@@ -34,12 +36,12 @@ class Web::Languages::LessonsController < Web::Languages::ApplicationController
     gon.lesson = @lesson
 
     title = [@info, resource_language.current_version.name].join(' | ').squish
-    description = view_context.truncate("[#{resource_language.current_version}] — #{@info.name} — #{@info.theory}", length: 220)
+    # без markdown/HTML и префикса «[Язык] — Урок —» (название уже в title), ≈155 символов по границе слова
+    description = MetaDescription.build(@info.theory, fallback: @info.name)
 
     seo_tags = {
       title: title,
       canonical: language_lesson_url(@lesson.language.slug, @lesson.slug),
-      amphtml: language_lesson_url(@lesson.language.slug, @lesson.slug, format: 'amp', only_path: false),
       image_src: view_context.image_url("#{@lesson.language.slug}.png"),
       description: description,
       og: {

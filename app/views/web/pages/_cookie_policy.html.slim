@@ -3,9 +3,9 @@
 = content_for :meta do
   meta content='article' property='og:type'
   meta content=t('.title') property='og:title'
-  meta content=page_url(:privacy) property='og:url'
+  meta content=page_url(:cookie_policy) property='og:url'
   meta content=image_url('logo.png') property='og:image'
-  link rel='canonical' href=page_url(:privacy)
+  link rel='canonical' href=page_url(:cookie_policy)
   meta content=t('.meta_description') property='og:description'
   meta content=t('.meta_description') name='description'
   meta content="#{I18n.locale}" property='og:locale'

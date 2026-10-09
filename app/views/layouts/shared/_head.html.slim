@@ -3,7 +3,8 @@ meta http-equiv='X-UA-Compatible' content='IE=Edge'
 meta name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-fit=no'
 
 / NOTE: if has at least one route param
-- unless request.path_parameters.size > 2
+/ NOTE: на страницах ошибок (404/403/500) hreflang не нужен
+- unless request.path_parameters.size > 2 || controller_name == 'errors'
   = render 'layouts/shared/current_page_alternate_lang'
 
 = yield :meta

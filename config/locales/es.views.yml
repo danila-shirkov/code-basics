@@ -62,9 +62,8 @@ es:
         all_reviews: Todas las reseñas
         categories: Categorías
         join: Regístrate y comienza a aprender ahora mismo
-        meta_description: Cursos prácticos gratuitos de programación para principiantes de la comunidad Códica. Aprende lenguajes de programación desde cero de manera gratuita, lecciones interactivas en línea en ruso.
-        title: |
-          Code Basics: cursos gratuitos de programación, aprendizaje en línea
+        meta_description: Cursos prácticos gratuitos de programación para principiantes de la comunidad Códica. Aprende lenguajes de programación desde cero de manera gratuita, lecciones interactivas en línea en español.
+        title: Cursos gratuitos de programación en línea
         header: Aprender programación. En línea. Gratis.
         subheader: 'Para aquellos que comienzan desde cero. De los creadores de '
         hexlet: Códica
@@ -195,11 +194,11 @@ es:
           to_home_title: Inicio
           breadcrumb: Migas de pan
         navigation_tab:
-        pages:
-          about:
-            title: Acerca del proyecto
-            meta_description: |
-              Code Basics: lecciones interactivas de alta calidad sobre fundamentos de programación de forma gratuita, para todos.
+    pages:
+      about:
+        title: Acerca del proyecto
+        meta_description: |
+          Code Basics: lecciones interactivas de alta calidad sobre fundamentos de programación de forma gratuita, para todos.
         projects_goal: |
           El objetivo de Code Basics es proporcionar lecciones interactivas de alta calidad sobre fundamentos de programación de forma gratuita, para todos.
         extended_credits: |
@@ -207,19 +206,19 @@ es:
         contributions: |
           El código fuente de la plataforma Code Basics, todas las lecciones y ejercicios están disponibles en GitHub. Puedes contribuir al proceso de mejora de las lecciones, corregir imprecisiones y expandir los cursos a otros lenguajes de programación.
         source_code: Código fuente
-        privacy:
-          meta_description: Política de privacidad de Code Basics
-          title: Política de privacidad
-        tos:
-          title: Términos de uso de la plataforma educativa
-          meta_description: Términos de uso de la plataforma educativa Code Basics
-        authors:
-          title: Para los autores
-          meta_description: |
-            Code Basics es un proyecto abierto en el que cualquier persona puede convertirse en autor de cursos. Aquí hay una lista de pasos que debes seguir para hacerlo.
-        cookie_policy:
-          title: Política de cookies
-          meta_description: Política de cookies
+      privacy:
+        meta_description: Política de privacidad de Code Basics
+        title: Política de privacidad
+      tos:
+        title: Términos de uso de la plataforma educativa
+        meta_description: Términos de uso de la plataforma educativa Code Basics
+      authors:
+        title: Para los autores
+        meta_description: |
+          Code Basics es un proyecto abierto en el que cualquier persona puede convertirse en autor de cursos. Aquí hay una lista de pasos que debes seguir para hacerlo.
+      cookie_policy:
+        title: Política de cookies
+        meta_description: Política de cookies
     account:
       profiles:
         edit:
@@ -229,20 +228,20 @@ es:
           confirm_delete: ¿Estás seguro de que quieres eliminar tu cuenta?
         destroy:
           success: Cuenta eliminada exitosamente
-        errors:
-          not_found:
-            base: No encontrado
-            meta_description: La página solicitada no fue encontrada
-            not_found: ¡Oops, no pudimos encontrar la página que buscas!
-            not_found_link_my_html: Pero puedes volver a la <a href="%{link}">página principal</a>
-          forbidden:
-            base: Prohibido
-            meta_description: No tienes permisos para acceder a esta página
-            forbidden: No tienes permisos para acceder a esta página
-          server_error:
-            base: Error del servidor
-            meta_description: Algo salió mal
-            server_error: Oops, algo salió mal. Nuestros programadores ya están resolviendo este problema.
+    errors:
+      not_found:
+        base: No encontrado
+        meta_description: La página solicitada no fue encontrada
+        not_found: ¡Oops, no pudimos encontrar la página que buscas!
+        not_found_link_my_html: Pero puedes volver a la <a href="%{link}">página principal</a>
+      forbidden:
+        base: Prohibido
+        meta_description: No tienes permisos para acceder a esta página
+        forbidden: No tienes permisos para acceder a esta página
+      server_error:
+        base: Error del servidor
+        meta_description: Algo salió mal
+        server_error: Oops, algo salió mal. Nuestros programadores ya están resolviendo este problema.
     shared:
       via_social_networks:
         via_social_networks: A través de redes sociales
