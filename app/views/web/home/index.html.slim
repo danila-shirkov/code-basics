@@ -1,3 +1,7 @@
+/ NOTE: разметка организации выводится здесь: content_for :meta из футера выполняется после <head> и в страницу не попадает
+= content_for :meta do
+  = structured_data_tag OrganizationSchema.to_builder
+
 .mt-sm-5.mb-5.pb-5
   = render 'hero'
 
