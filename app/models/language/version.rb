@@ -91,7 +91,9 @@ class Language::Version < ApplicationRecord
 
   # TODO: move to presenter
   def image_tag
-    return "lv#{id}" if Rails.env.production?
+    # Версионные теги lv<id> нужны только при публикации образов упражнений в свой реестр (EXERCISE_IMAGES_VERSIONED=true);
+    # без неё (Codica) используется локальный :latest, который скачивает DockerExerciseApi.download
+    return "lv#{id}" if AppHost.versioned_exercise_images?
 
     :latest
   end

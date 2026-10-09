@@ -24,8 +24,15 @@ module AppHost
     single_locale? ? [I18n.default_locale] : I18n.available_locales
   end
 
-  # Карты сайта пишутся в S3-бакет (DO Spaces) только в production при заданном бакете, иначе — файлами в public/sitemaps/
+  # Карты сайта пишутся в S3-бакет (DO Spaces) только при явном SITEMAP_STORAGE=bucket в production, иначе — файлами в
+  # public/sitemaps/. Одного DO_SPACES_SITEMAP_BUCKET мало: эти переменные могут быть в .env «по умолчанию» и указывать на чужой бакет.
   def self.sitemap_in_bucket?
-    Rails.env.production? && ENV['DO_SPACES_SITEMAP_BUCKET'].present?
+    Rails.env.production? && ENV['SITEMAP_STORAGE'] == 'bucket' && ENV['DO_SPACES_SITEMAP_BUCKET'].present?
+  end
+
+  # Образы упражнений публикуются под тегом lv<id версии> (docker tag + push) только при EXERCISE_IMAGES_VERSIONED=true;
+  # по умолчанию (Codica, нет доступа к реестру Hexlet) — локальный :latest без push.
+  def self.versioned_exercise_images?
+    ENV['EXERCISE_IMAGES_VERSIONED'] == 'true'
   end
 end

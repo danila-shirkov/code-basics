@@ -4,9 +4,10 @@ Configus.build Rails.env do
   env :production do
     hexlet_basics_release_version ENV.fetch('HEXLET_BASICS_RELEASE_VERSION', nil)
 
+    # Значения Codica (раньше в production стояли значения Hexlet, а настройки Codica жили только в development)
     protocol :https
-    host 'code-basics.com'
-    https_host 'https://code-basics.com'
+    host ENV.fetch('APP_HOST', 'basicos.codica.la')
+    https_host "https://#{ENV.fetch('APP_HOST', 'basicos.codica.la')}"
 
     github do
       app_id ENV.fetch('GITHUB_CLIENT_ID', nil)
@@ -18,12 +19,13 @@ Configus.build Rails.env do
       app_secret ENV.fetch('FACEBOOK_CLIENT_SECRET', nil)
     end
 
+    # Комментарии и метки — как сейчас на сервере (блок development); идентификаторы Hexlet в production Codica не нужны
     disqus do
-      ru 'hexlet-basics'
-      en 'hexlet-basics-en'
+      ru 'code-basics-test'
+      en 'code-basics-test'
     end
 
-    gtm_id ENV.fetch('GOOGLE_TAG_MANAGER_KEY', nil)
+    gtm_id 'GTM-KT3SQJ25'
 
     google do
       client do

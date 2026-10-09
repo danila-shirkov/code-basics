@@ -34,7 +34,8 @@ class DockerExerciseApi
   end
 
   def self.tag_image_version(lang_name, tag)
-    return unless Rails.env.production?
+    # тегирование и push в Docker Hub — только для публикации версионных образов (EXERCISE_IMAGES_VERSIONED=true)
+    return unless AppHost.versioned_exercise_images?
 
     tag_command = "docker tag #{image_name(lang_name)}:latest #{image_name(lang_name)}:#{tag}"
     BashRunner.start(tag_command)

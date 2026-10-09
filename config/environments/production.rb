@@ -36,7 +36,9 @@ Rails.application.configure do
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
-  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
+  # NOTE: X-Accel-Redirect работает только если nginx отдаёт файлы сам (internal location). Когда статику отдаёт Rails
+  # (RAILS_SERVE_STATIC_FILES), заголовок отключаем: иначе nginx получит X-Accel-Redirect на путь вне своих location и ответит 404.
+  config.action_dispatch.x_sendfile_header = ENV['RAILS_SERVE_STATIC_FILES'].present? ? nil : 'X-Accel-Redirect' # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
