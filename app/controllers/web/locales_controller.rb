@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Web::LocalesController < Web::ApplicationController
-  skip_before_action :prepare_locale_settings, only: [:switch]
+  # NOTE: колбэк prepare_locale_settings удалён из Web::ApplicationController (он не подключён), поэтому skip_before_action
+  # для него здесь падает при eager load в production («callback has not been defined»)
 
   def switch
     locale = params[:new_locale]

@@ -83,7 +83,9 @@ Rails.application.configure do
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = true
+  # NOTE: default_locale здесь :es, поэтому `true` не даёт запасного языка. У испанской локали нет части текстов (страницы about/authors/
+  # privacy/tos, подписи страницы 404) — вместо ошибки 500 показываем английский вариант, пока не появятся испанские.
+  config.i18n.fallbacks = { es: %i[es en] }
 
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
