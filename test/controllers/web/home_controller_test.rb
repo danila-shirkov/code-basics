@@ -82,4 +82,95 @@ class Web::HomeControllerTest < ActionDispatch::IntegrationTest
       end
     end
   end
+
+  # --- новая главная (ТЗ главной) ---
+
+  test 'landing has one h1, five h2 for guests and six native faq items without scripts of its own' do
+    get root_url
+    assert_response :success
+
+    assert_select 'main h1', 1
+    assert_select 'main h2', 5
+    assert_select 'main details', 6
+    assert_select 'main details[open]', 1
+    assert_select 'main script', 0
+    assert_select 'main a.hb-btn--primary', 1
+  end
+
+  test 'tag manager (with the counters inside) is loaded only in production' do
+    get root_url
+
+    assert_not_includes response.body, 'googletagmanager.com'
+  end
+
+  test 'landing hides the sign up call for signed in users' do
+    sign_in_as :one
+    get root_url
+    assert_response :success
+
+    assert_select 'main h1', 1
+    assert_select 'main h2', 4
+    assert_select '.hb-final', 0
+    assert_select '.hb-note', 0
+  end
+
+  test 'landing links every course to its first lesson by position and to the course page' do
+    get root_url
+    course = HomeCatalog.new.courses.find { |item| item.slug == 'javascript' }
+
+    assert_select "#cursos a[href='#{language_lesson_path(course.slug, course.first_lesson_slug)}']", 1
+    assert_select "#cursos a[href='#{language_path(course.slug)}']", 1
+    Language::Category.find_each do |category|
+      next unless HomeCatalog.new.groups.any? { |group| group.category == category }
+
+      assert_select "#cursos a[href='#{language_category_path(category.slug)}']", 2
+    end
+  end
+
+  test 'landing numbers come from the database' do
+    get root_url
+    catalog = HomeCatalog.new
+
+    assert_select '.hb-stat strong', text: catalog.courses_count.to_s
+    assert_select '.hb-stat strong', text: catalog.lessons_total.to_s
+  end
+
+  test 'landing in Spanish: copy, metadata, brand and links to codica.la' do
+    I18n.with_locale(:es) do
+      get root_url
+      assert_response :success
+
+      assert_select 'main h1', text: 'Aprende programación gratis, paso a paso'
+      assert_select 'main h1 mark', text: 'gratis'
+      assert_select 'main h2', text: 'Elige tu camino'
+      assert_select 'main h2', text: 'Así aprendes, lección por lección'
+      assert_select 'main h2', text: '¿Y después de los cursos gratuitos?'
+      assert_select 'main h2', text: 'Preguntas frecuentes'
+      assert_select 'main h2', text: 'Empieza hoy tu primera lección'
+
+      title = css_select('title').first.text
+      description = css_select('meta[name=description]').first['content']
+
+      assert_equal 'Cursos gratuitos de programación en línea | Códica Básicos', title
+      assert_operator title.length, :<=, 60
+      assert_equal 'Cursos gratuitos de programación para principiantes: Python, JavaScript, HTML, CSS, PHP y Java. Aprende en español con Códica Básicos.', description
+      assert_operator description.length, :<=, 155
+      assert_select "meta[property='og:site_name'][content='Códica Básicos']"
+      assert_select "meta[property='og:title'][content='Cursos gratuitos de programación en línea']"
+
+      assert_no_match(/code\s*basics/i, response.body)
+      assert_operator css_select('main').first.text.split.size, :>=, 300
+
+      utm = 'utm_source=basicos&utm_medium=site&utm_campaign=home_carreras'
+      assert_select "main a[href='https://codica.la/carreras/frontend?#{utm}']", 1
+      assert_select "main a[href='https://codica.la/carreras/fullstack?#{utm}']", 1
+      assert_select "main a[href='https://codica.la/carreras/python?#{utm}']", 1
+      assert_select "main a[href='https://codica.la/carreras?#{utm}']", 2 # кнопка блока 5 и ссылка в ответе про сертификат
+      assert_select 'main a[rel*=nofollow]', 0
+
+      assert_select 'main summary', text: '¿Hay certificado al terminar?'
+      assert_select 'main details p a', text: 'carreras'
+      assert_select '.hb-final a[href=?]', new_user_path
+    end
+  end
 end

@@ -1,0 +1,24 @@
+section#despues.hb-section.hb-section--dark aria-labelledby="careers-title"
+  .hb-wrap
+    .hb-sec-head
+      p.hb-eyebrow = t('.eyebrow')
+      h2#careers-title = t('.title')
+      p = t('.text')
+
+    .hb-cards.hb-cards--3
+      - HomeHelper::CODICA_CAREERS.each do |career|
+        - name = t(".items.#{career[:key]}.name")
+        article.hb-card
+          .hb-card__top
+            .hb-badge aria-hidden="true" = career[:badge]
+            div
+              h3.hb-card__title = name
+              .hb-card__meta = t('.kind')
+          p.hb-card__text = t(".items.#{career[:key]}.stack")
+          .hb-card__go
+            = link_to codica_url(career[:path]) do
+              = t('.see')
+              span.visually-hidden = " #{t('.see_for', career: name)}"
+
+    .hb-more
+      = link_to t('.see_all'), codica_url('/carreras'), class: 'hb-btn hb-btn--ghost'

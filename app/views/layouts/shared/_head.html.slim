@@ -9,10 +9,10 @@ meta name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-f
 
 = yield :meta
 
-= favicon_link_tag (source = "favicon.png")
+= favicon_link_tag 'favicon.png'
 = csrf_meta_tags
 = csp_meta_tag
-= display_meta_tags reverse: true, site: 'CodeBasics'
+= display_meta_tags reverse: true, site: 'Códica Básicos'
 = Gon::Base.render_data
 
 / = stylesheet_link_tag 'vendors'
@@ -27,8 +27,9 @@ javascript:
     };
 script src='/~partytown/partytown.js'
 
-/ - if Rails.env.production?
-= render 'layouts/deps/gtm_head'
+/ NOTE: GTM (со счётчиками внутри) только в production, как и noscript-часть в layouts/application: локальные запуски и тесты не пишут в статистику
+- if Rails.env.production?
+  = render 'layouts/deps/gtm_head'
 / = render 'layouts/deps/renta_head'
 
 - prepend_javascript_packs 'application'

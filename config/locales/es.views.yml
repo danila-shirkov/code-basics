@@ -47,22 +47,117 @@ es:
         reviews: Reseñas
         course_html: Curso %{link}
       hero:
-        learn_html: Aprende&nbsp;
-        free_programming_courses: Cursos gratuitos de programación
-        fastest_way_to_start_coding: La forma más rápida de comenzar a programar directamente en el navegador. Cursos gratuitos con prácticas interactivas después de cada lección.
-        try: Prueba
-        how_coding_works: Cómo funciona la enseñanza en code-basics
-      languages:
-        courses: Cursos
+        eyebrow: Cursos gratuitos de programación
+        h1_html: Aprende programación <mark>gratis</mark>, paso a paso
+        lead: Lecciones cortas con práctica en el navegador. Empiezas desde cero y no necesitas instalar nada.
+        start: Empezar con %{course}
+        all_courses: Ver todos los cursos
+        note: Sin costo. Crea tu cuenta para guardar tu progreso.
+        example:
+          label: Ejemplo de una lección
+          title: Python · Tipo lógico
+          question: ¿Es 5 mayor que 4?
+          explanation_html: En programación también se comparan valores. El resultado es siempre <em>verdadero</em> o <em>falso</em>.
+          comment: "# Prueba tú mismo"
+          result: Resultado
+      courses:
+        title: Elige tu camino
+        subtitle: Empieza por lo que más te llame la atención. Todos los cursos son para principiantes.
+        group_link: Ver el grupo →
+        group_link_for: "%{group}"
+        first_lesson: Primera lección →
+        first_lesson_for: de %{course}
+        about: Sobre el curso
+        about_for: de %{course}
+        groups:
+          layouting: Cómo se construye y se ve una página web.
+          programming: Lenguajes para crear programas y servicios.
+        badges:
+          html: HTML
+          css: CSS
+          python: Py
+          javascript: JS
+          java: Java
+          php: PHP
+        descriptions:
+          html: "La estructura de cualquier página web: títulos, textos, enlaces e imágenes."
+          css: "Colores, tipografía y diseño: así se le da estilo a una página."
+          python: Un lenguaje claro y fácil de leer. Sirve para sitios web, datos y automatización.
+          javascript: El lenguaje que hace que las páginas respondan a lo que haces.
+          java: Aplicaciones robustas y programación orientada a objetos desde cero.
+          php: Sitios y aplicaciones web del lado del servidor.
+      how:
+        title: Así aprendes, lección por lección
+        subtitle: Cada lección combina teoría breve y práctica.
+        steps:
+          theory:
+            label: PASO 1
+            title: Lees la teoría
+            text: Explicaciones breves, con ejemplos, en español y sin tecnicismos innecesarios.
+          practice:
+            label: PASO 2
+            title: Practicas en el editor
+            text: Escribes código real directamente en el navegador. No instalas programas.
+          check:
+            label: PASO 3
+            title: Se revisa solo
+            text: "La comprobación es automática: ves enseguida si tu solución funciona."
+      careers:
+        eyebrow: De Códica
+        title: ¿Y después de los cursos gratuitos?
+        text: "Cuando domines lo básico, sigue con una carrera completa en Códica: mentores, proyectos reales y acompañamiento hasta tu primer empleo."
+        kind: Carrera en Códica
+        see: Ver la carrera →
+        see_for: "%{career}"
+        see_all: Ver las carreras de Códica
+        items:
+          frontend:
+            name: Front-end
+            stack: HTML y CSS, JavaScript, React.
+          fullstack:
+            name: Full-Stack
+            stack: JavaScript, React, SQL.
+          python:
+            name: Python
+            stack: Python, Django, SQL.
+      faq:
+        title: Preguntas frecuentes
+        items:
+          free:
+            question: ¿Los cursos son realmente gratis?
+            answer: Sí. Todos los cursos de Códica Básicos son gratuitos. Para guardar tu progreso solo necesitas crear una cuenta.
+          no_experience:
+            question: ¿Necesito saber programar para empezar?
+            answer: No. Los cursos están pensados para principiantes y empiezan desde cero.
+          install:
+            question: ¿Tengo que instalar algo en mi computadora?
+            answer: No. Practicas directamente en el editor dentro del navegador.
+          where_start:
+            question: ¿Con qué curso conviene empezar?
+            answer: Si quieres crear páginas web, empieza con HTML. Si prefieres aprender a programar en general, empieza con Python.
+          certificate:
+            question: ¿Hay certificado al terminar?
+            answer_html: "El certificado de Códica se obtiene al completar una de nuestras %{link}: Front-end, Full-Stack o Python."
+            careers_link: carreras
+          after:
+            question: ¿Cómo sigo después de los cursos gratuitos?
+            answer: Puedes continuar con una carrera completa en Códica, con mentores y acompañamiento hasta tu primer empleo.
+      final:
+        title: Empieza hoy tu primera lección
+        text: Crea tu cuenta gratis y avanza a tu ritmo.
+        button: Crear cuenta gratis
       stats:
-        trusted_by: |
-          Únete a %{count} personas que están aprendiendo programación con Code Basics
+        label: Códica Básicos en cifras
+        courses: cursos de programación
+        lessons: lecciones con práctica
+        free_value: "100%"
+        free: gratuito
       index:
         reviews: Reseñas
         all_reviews: Todas las reseñas
         categories: Categorías
         join: Regístrate y comienza a aprender ahora mismo
-        meta_description: Cursos prácticos gratuitos de programación para principiantes de la comunidad Códica. Aprende lenguajes de programación desde cero de manera gratuita, lecciones interactivas en línea en español.
+        meta_description: "Cursos gratuitos de programación para principiantes: Python, JavaScript, HTML, CSS, PHP y Java. Aprende en español con Códica Básicos."
         title: Cursos gratuitos de programación en línea
         header: Aprender programación. En línea. Gratis.
         subheader: 'Para aquellos que comienzan desde cero. De los creadores de '

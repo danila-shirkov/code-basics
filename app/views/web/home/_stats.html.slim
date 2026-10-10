@@ -1,11 +1,12 @@
-/ .container
-/   .card.bg-primary.text-light.p-5
-/     .card-block
-/       .fs-3.fw-bold
-/         = t('.trusted_by', count: User.count)
-
-/       .row
-/         .col.m-auto
-/           = User.count
-/         .col
-/         .col
+section.hb-stats aria-label=t('.label')
+  .hb-wrap
+    ul.hb-stats__grid
+      li.hb-stat
+        strong = catalog.courses_count
+        span = t('.courses')
+      li.hb-stat
+        strong = catalog.lessons_total
+        span = t('.lessons')
+      li.hb-stat
+        strong = t('.free_value')
+        span = t('.free')

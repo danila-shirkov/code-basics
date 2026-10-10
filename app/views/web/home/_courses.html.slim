@@ -1,0 +1,42 @@
+section#cursos.hb-section aria-labelledby="courses-title"
+  .hb-wrap
+    .hb-sec-head
+      h2#courses-title = t('.title')
+      p = t('.subtitle')
+
+    - catalog.groups.each do |group|
+      - category = group.category
+      - group_description = t(".groups.#{category.slug}", default: '')
+      .hb-group
+        .hb-group__head
+          h3.hb-group__title = link_to category.name, language_category_path(category.slug)
+          = link_to language_category_path(category.slug), class: 'hb-group__more' do
+            = t('.group_link')
+            span.visually-hidden = " #{t('.group_link_for', group: category.name)}"
+        - if group_description.present?
+          p.hb-group__text = group_description
+
+        .hb-cards class="hb-cards--#{group.courses.size.clamp(2, 4)}"
+          - group.courses.each do |course|
+            ruby:
+              description = t(".descriptions.#{course.slug}", default: '')
+              facts = []
+              facts << t('lessons', count: course.lessons_count) if course.lessons_count?
+              facts << t('hours', count: course.duration) if course.hours?
+            article.hb-card
+              .hb-card__top
+                .hb-badge aria-hidden="true" = course_badge(course.slug)
+                div
+                  h4.hb-card__title = course.name
+                  - if facts.any?
+                    .hb-card__meta = facts.join(' · ')
+              - if description.present?
+                p.hb-card__text = description
+              .hb-card__go
+                - if course.first_lesson_slug
+                  = link_to language_lesson_path(course.slug, course.first_lesson_slug) do
+                    = t('.first_lesson')
+                    span.visually-hidden = " #{t('.first_lesson_for', course: course.name)}"
+                = link_to language_path(course.slug), class: 'hb-card__alt' do
+                  = t('.about')
+                  span.visually-hidden = " #{t('.about_for', course: course.name)}"

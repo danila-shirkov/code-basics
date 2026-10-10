@@ -1,0 +1,13 @@
+section#faq.hb-section aria-labelledby="faq-title"
+  .hb-wrap
+    .hb-sec-head
+      h2#faq-title = t('.title')
+    .hb-faq
+      / NOTE: нативный <details> без JS: ответы всегда в HTML; первый открыт
+      - %w[free no_experience install where_start certificate after].each_with_index do |key, index|
+        details open=index.zero?
+          summary = t(".items.#{key}.question")
+          - if key == 'certificate'
+            p = t('.items.certificate.answer_html', link: link_to(t('.items.certificate.careers_link'), codica_url('/carreras')))
+          - else
+            p = t(".items.#{key}.answer")

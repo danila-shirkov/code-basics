@@ -1,8 +1,8 @@
 .navbar.navbar-expand-md.navbar-light
   .container-fluid
     /= link_to root_path, class: 'navbar-brand me-md-4' do
-	= link_to "#{ENV.fetch("BASE_DOMAIN")}", class: 'navbar-brand me-md-4' do
-      = image_tag 'logo_codica.svg', width: 60, alt: 'Code Basics logo', valign: 'absmiddle'
+    = link_to ENV.fetch('BASE_DOMAIN'), class: 'navbar-brand me-md-4' do
+      = image_tag 'logo_codica.svg', width: 60, alt: 'Códica Básicos', valign: 'absmiddle'
 
     button.navbar-toggler(
       type='button' data-bs-toggle='collapse'
@@ -19,13 +19,10 @@
           = render 'layouts/shared/language_menu'
 
         li.nav-item.me-2
-          = link_to t('.bootcamps'), "#{ENV.fetch("BASE_DOMAIN")}/bootcamps", class: "nav-link text-dark"
+          = link_to t('.career'), "#{ENV.fetch('BASE_DOMAIN')}/carreras", class: 'nav-link text-dark'
 
         li.nav-item.me-2
-          = link_to t('.career'), "#{ENV.fetch("BASE_DOMAIN")}/carreras", class: "nav-link text-dark"
-
-        li.nav-item.me-2
-          = link_to t('.about_us'), "#{ENV.fetch("BASE_DOMAIN")}/nosotros", class: "nav-link text-dark"
+          = link_to t('.about_us'), "#{ENV.fetch('BASE_DOMAIN')}/nosotros", class: 'nav-link text-dark'
 
       ul.navbar-nav
         - if current_user.guest?

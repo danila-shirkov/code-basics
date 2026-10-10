@@ -4,7 +4,7 @@
 MetaTags.configure do |config|
   # How many characters should the title meta tag have at most. Default is 70.
   # Set to nil or 0 to remove limits.
-  # NOTE: лимит 70 вместе с « | CodeBasics» обрезал названия курсов на середине («…principiantes: 72»), поэтому шире
+  # NOTE: лимит 70 вместе с « | Códica Básicos» обрезал названия курсов на середине («…principiantes: 72»), поэтому шире
   config.title_limit = 100
 
   # When true, site title will be truncated instead of title. Default is false.

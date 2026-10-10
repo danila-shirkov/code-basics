@@ -1,14 +1,31 @@
-.container
-  .p-4.pb-0.pt-lg-5.align-items-center.border.shadow.bg-white.rounded-3
-    .row
-      .col-lg-7.p-3.p-lg-5.pt-lg-3
-        h1.h6.text-muted = t('.free_programming_courses')
-        .display-4.fw-bold.lh-1.mb-3
-          = t('.learn_html')
-          span.text-primary
-            span.hero-header
-        p.lead = t('.fastest_way_to_start_coding')
-        .d-grid.gap-2.d-md-flex.justify-content-md-start.mb-4.mb-lg-3
-          a.btn.btn-primary.btn-lg.px-4.me-md-2.fw-bold href="#courses" = t('.try')
-      .col-lg-4.offset-lg-1.p-0.overflow-hidden.shadow-lg.text-center
-        img.rounded-lg-3 alt=t('.how_coding_works') src=image_url("code-basics-coding-#{I18n.locale}.png") width="720" height="356"
+- start_course = catalog.start_course
+
+section.hb-hero aria-labelledby="hero-title"
+  .hb-wrap.hb-hero__grid
+    div
+      p.hb-eyebrow = t('.eyebrow')
+      h1#hero-title = t('.h1_html')
+      p.hb-lead = t('.lead')
+      .hb-cta
+        - if start_course&.first_lesson_slug
+          = link_to t('.start', course: start_course.name), language_lesson_path(start_course.slug, start_course.first_lesson_slug), class: 'hb-btn hb-btn--primary'
+        = link_to t('.all_courses'), '#cursos', class: 'hb-btn hb-btn--ghost'
+      - if current_user.guest?
+        p.hb-note = t('.note')
+
+    / NOTE: статический пример, не настоящий редактор; подсветка — только CSS-классами
+    figure.hb-lesson aria-label=t('.example.label')
+      .hb-lesson__bar
+        span.hb-lesson__dots aria-hidden="true"
+          span
+          span
+          span
+        strong = t('.example.title')
+      .hb-lesson__text
+        p.hb-lesson__question = t('.example.question')
+        p = t('.example.explanation_html')
+      pre.hb-code
+        code = home_example_code(t('.example.comment'))
+      .hb-lesson__out
+        span.hb-pill = t('.example.result')
+        code True · False

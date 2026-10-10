@@ -16,6 +16,8 @@ OmniAuth.config.request_validation_phase = OmniAuth::AuthenticityTokenProtection
 
 class ActiveSupport::TestCase
   include FactoryBot::Syntax::Methods
+  # NOTE: queue_adapter (setup ниже) есть только в ActiveJob::TestHelper; без него падают все тесты на ActiveSupport::TestCase
+  include ActiveJob::TestHelper
 
   parallelize(workers: :number_of_processors)
 

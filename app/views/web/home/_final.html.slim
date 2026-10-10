@@ -1,0 +1,6 @@
+section.hb-final aria-labelledby="final-title"
+  .hb-wrap
+    .hb-final__box
+      h2#final-title = t('.title')
+      p = t('.text')
+      = link_to t('.button'), new_user_path, class: 'hb-btn hb-btn--light'

@@ -1,0 +1,725 @@
+// Главная страница (web/home). Все правила под .hb-home, классы с префиксом hb-: не пересекаются с Bootstrap и остальным сайтом.
+// Токены — из дизайн-системы Códica (codica_design_system/dist/tokens.css). Шрифт — системный, как на остальном сайте
+// (фирменный Onest подключим после редизайна); тёмной темы на сайте нет, поэтому здесь её тоже нет.
+// Контраст проверен по WCAG AA: белый на #136ef6 — 4,57:1; ссылки на светлом фоне — #0b58cc (6,4:1);
+// приглушённый текст — #5f666d (≥ 5,2:1 на #fff и #f7f8fa).
+
+.hb-home {
+  --hb-bg: #fff;
+  --hb-bg-subtle: #f7f8fa;
+  --hb-bg-inverse: #212529;
+  --hb-brand: #136ef6;
+  --hb-brand-hover: #0b58cc;
+  --hb-brand-subtle: #e8f1ff;
+  --hb-highlight: #fff705;
+  --hb-ink-strong: #000;
+  --hb-ink: #212529;
+  --hb-ink-soft: #525252;
+  --hb-ink-muted: #5f666d;
+  --hb-link: #0b58cc;
+  --hb-border: #f0f0f0;
+  --hb-border-strong: #e3e3e3;
+  --hb-focus: #0b58cc;
+  --hb-shadow-card: rgba(109, 117, 125, .2) 0 2px 5px 0;
+  --hb-shadow-brand: rgba(19, 110, 246, .2) 4px 4px 16px 0;
+  --hb-code-bg: #1b1f24;
+  --hb-code-ink: #e6edf3;
+
+  background: var(--hb-bg);
+  color: var(--hb-ink);
+  line-height: 1.55;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  ul,
+  ol {
+    margin: 0;
+  }
+
+  ul,
+  ol {
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  svg {
+    max-width: 100%;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--hb-focus);
+    outline-offset: 2px;
+  }
+
+  // ---------- общие элементы ----------
+
+  .hb-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .hb-eyebrow {
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--hb-ink-soft);
+  }
+
+  .hb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 13px 24px;
+    border: 1.5px solid transparent;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21px;
+    cursor: pointer;
+    transition: background-color .15s, border-color .15s, color .15s;
+  }
+
+  .hb-btn--primary {
+    background: var(--hb-brand);
+    color: #fff;
+
+    &:hover {
+      background: var(--hb-brand-hover);
+    }
+  }
+
+  .hb-btn--ghost {
+    border-color: #7d858d;
+    color: var(--hb-ink);
+
+    &:hover {
+      border-color: var(--hb-link);
+      color: var(--hb-link);
+    }
+  }
+
+  .hb-btn--light {
+    background: #fff;
+    color: var(--hb-brand-hover);
+
+    &:hover {
+      background: var(--hb-brand-subtle);
+    }
+  }
+
+  .hb-section {
+    padding: 60px 0;
+  }
+
+  .hb-section--subtle {
+    background: var(--hb-bg-subtle);
+  }
+
+  .hb-sec-head {
+    max-width: 40em;
+    margin-bottom: 36px;
+
+    h2 {
+      font-size: clamp(28px, 3.4vw, 38px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -.4px;
+      color: var(--hb-ink-strong);
+    }
+
+    p {
+      margin-top: 12px;
+      font-size: 18px;
+      color: var(--hb-ink-soft);
+    }
+
+    .hb-eyebrow {
+      margin: 0 0 15px;
+    }
+  }
+
+  // ---------- 1. Hero ----------
+
+  .hb-hero {
+    padding: 60px 0 80px;
+    background: linear-gradient(180deg, var(--hb-brand-subtle), var(--hb-bg) 85%);
+  }
+
+  .hb-hero__grid {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hb-hero h1 {
+    font-size: clamp(34px, 5vw, 50px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -.8px;
+    color: var(--hb-ink-strong);
+
+    mark {
+      padding: 0 2px;
+      background: linear-gradient(transparent 58%, var(--hb-highlight) 58%);
+      color: inherit;
+    }
+  }
+
+  .hb-lead {
+    max-width: 34em;
+    margin: 22px 0 32px;
+    font-size: 20px;
+    line-height: 27px;
+    color: var(--hb-ink-soft);
+  }
+
+  .hb-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .hb-note {
+    margin-top: 18px;
+    font-size: 14px;
+    color: var(--hb-ink-muted);
+  }
+
+  // Карточка-пример: статический HTML; высота резервируется, чтобы вёрстка не прыгала
+  .hb-lesson {
+    min-height: 360px;
+    overflow: hidden;
+    background: var(--hb-bg);
+    border: 1px solid var(--hb-border-strong);
+    border-radius: 20px;
+    box-shadow: var(--hb-shadow-brand);
+  }
+
+  .hb-lesson__bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--hb-border-strong);
+    font-size: 13px;
+    color: var(--hb-ink-muted);
+
+    strong {
+      margin-left: 6px;
+      font-weight: 600;
+      color: var(--hb-ink);
+    }
+  }
+
+  .hb-lesson__dots {
+    display: flex;
+    gap: 6px;
+
+    span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--hb-border-strong);
+    }
+  }
+
+  .hb-lesson__text {
+    padding: 18px 20px 6px;
+
+    p {
+      font-size: 15px;
+      color: var(--hb-ink-soft);
+    }
+
+    .hb-lesson__question {
+      margin-bottom: 6px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--hb-ink-strong);
+    }
+  }
+
+  .hb-lesson__out {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: 0 20px 18px;
+    font-size: 14px;
+
+    code {
+      color: var(--hb-ink-soft);
+    }
+  }
+
+  pre.hb-code {
+    margin: 14px 20px;
+    padding: 16px 18px;
+    overflow: auto;
+    border-radius: 12px;
+    background: var(--hb-code-bg);
+    color: var(--hb-code-ink);
+    font-size: 14px;
+    line-height: 22px;
+
+    code {
+      color: inherit;
+      font-size: inherit;
+    }
+
+    .k {
+      color: #79c0ff;
+    }
+
+    .n {
+      color: #ffa657;
+    }
+
+    .c {
+      color: #a8b2bd;
+    }
+  }
+
+  .hb-pill {
+    padding: 2px 10px;
+    border-radius: 3000px;
+    background: #e3f6e9;
+    color: #15692f;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  // ---------- 2. Цифры ----------
+
+  .hb-stats {
+    padding: 30px 0 60px;
+  }
+
+  .hb-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    text-align: center;
+  }
+
+  .hb-stat {
+    strong {
+      display: block;
+      font-size: 46px;
+      font-weight: 700;
+      line-height: 55px;
+      color: var(--hb-brand);
+    }
+
+    span {
+      font-size: 14px;
+      color: var(--hb-ink-muted);
+    }
+  }
+
+  // ---------- 3. Курсы ----------
+
+  .hb-group + .hb-group {
+    margin-top: 40px;
+  }
+
+  .hb-group__head {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .hb-group__title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--hb-ink-strong);
+
+    a {
+      display: inline-block;
+      padding: 6px 0;
+    }
+  }
+
+  .hb-group__more {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 4px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--hb-link);
+  }
+
+  .hb-group__text {
+    margin-bottom: 18px;
+    color: var(--hb-ink-muted);
+  }
+
+  .hb-cards {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hb-cards--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hb-cards--4 {
+    gap: 22px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hb-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+    background: var(--hb-bg);
+    border: 1px solid var(--hb-border);
+    border-radius: 20px;
+    box-shadow: var(--hb-shadow-card);
+  }
+
+  .hb-card__top {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .hb-badge {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--hb-brand-subtle);
+    color: var(--hb-link);
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .hb-card__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: var(--hb-ink-strong);
+  }
+
+  .hb-card__meta {
+    font-size: 13px;
+    color: var(--hb-ink-muted);
+  }
+
+  .hb-card__text {
+    flex: 1;
+    font-size: 15px;
+    color: var(--hb-ink-soft);
+  }
+
+  .hb-card__go {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    padding-top: 10px;
+    border-top: 1px solid var(--hb-border-strong);
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 4px;
+      font-weight: 600;
+      color: var(--hb-link);
+    }
+
+    .hb-card__alt {
+      font-weight: 500;
+      color: var(--hb-ink-soft);
+    }
+  }
+
+  // ---------- 4. Как это работает ----------
+
+  .hb-steps {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hb-step {
+    padding: 28px;
+    background: var(--hb-bg);
+    border: 1px solid var(--hb-border);
+    border-radius: 20px;
+    box-shadow: var(--hb-shadow-card);
+  }
+
+  .hb-step__icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 16px;
+    border-radius: 14px;
+    background: var(--hb-brand-subtle);
+    color: var(--hb-link);
+
+    svg {
+      width: 26px;
+      height: 26px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  .hb-step__label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--hb-ink-muted);
+  }
+
+  .hb-step__title {
+    margin: 4px 0 8px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 29px;
+    color: var(--hb-ink-strong);
+  }
+
+  .hb-step p {
+    color: var(--hb-ink-soft);
+  }
+
+  // ---------- 7. Финальный призыв ----------
+
+  .hb-final {
+    padding: 15px 0 75px;
+  }
+
+  .hb-final__box {
+    padding: 56px 32px;
+    border-radius: 30px;
+    background: var(--hb-brand);
+    color: #fff;
+    text-align: center;
+
+    h2 {
+      font-size: clamp(28px, 3.6vw, 40px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.4px;
+    }
+
+    p {
+      max-width: 34em;
+      margin: 12px auto 28px;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    :focus-visible {
+      outline-color: #fff;
+    }
+  }
+
+  // ---------- 6. FAQ ----------
+
+  .hb-faq {
+    max-width: 820px;
+
+    details {
+      margin-bottom: 12px;
+      background: var(--hb-bg);
+      border: 1px solid var(--hb-border-strong);
+      border-radius: 15px;
+    }
+
+    summary {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      padding: 18px 22px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--hb-ink-strong);
+      cursor: pointer;
+      list-style: none;
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      &::after {
+        content: "+";
+        font-size: 24px;
+        line-height: 20px;
+        color: var(--hb-link);
+      }
+    }
+
+    details[open] summary::after {
+      content: "–";
+    }
+
+    details p {
+      padding: 0 22px 20px;
+      color: var(--hb-ink-soft);
+    }
+
+    details p a {
+      font-weight: 600;
+      color: var(--hb-link);
+      text-decoration: underline;
+    }
+  }
+
+  // ---------- 5. Мост к Códica (тёмная секция) ----------
+
+  .hb-section--dark {
+    background: var(--hb-bg-inverse);
+    color: #fff;
+
+    :focus-visible {
+      outline-color: #8ab8fd;
+    }
+
+    .hb-sec-head h2 {
+      color: #fff;
+    }
+
+    .hb-sec-head p,
+    .hb-eyebrow {
+      color: #d5d9dd;
+    }
+
+    .hb-card {
+      background: #2b3036;
+      border-color: #3a4149;
+      box-shadow: none;
+    }
+
+    .hb-card__title {
+      color: #fff;
+    }
+
+    .hb-card__text {
+      color: #c3c8cd;
+    }
+
+    .hb-card__meta {
+      color: #a8b0b8;
+    }
+
+    .hb-badge {
+      background: #16263d;
+      color: #8ab8fd;
+    }
+
+    .hb-card__go {
+      border-color: #3a4149;
+
+      a {
+        color: #8ab8fd;
+      }
+    }
+
+    .hb-btn--ghost {
+      border-color: #fff;
+      color: #fff;
+
+      &:hover {
+        border-color: #8ab8fd;
+        color: #8ab8fd;
+      }
+    }
+  }
+
+  .hb-more {
+    margin-top: 34px;
+  }
+
+  // ---------- адаптивность ----------
+
+  @media (max-width: 960px) {
+    .hb-hero__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hb-lesson {
+      min-height: 0;
+    }
+
+    .hb-cards,
+    .hb-cards--2,
+    .hb-cards--4,
+    .hb-steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 620px) {
+    .hb-hero {
+      padding: 40px 0 56px;
+    }
+
+    .hb-cards,
+    .hb-cards--2,
+    .hb-cards--4,
+    .hb-steps,
+    .hb-stats__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hb-stat strong {
+      font-size: 38px;
+      line-height: 46px;
+    }
+
+    .hb-group__head {
+      align-items: flex-start;
+    }
+  }
+}
+
+// Плавная прокрутка к якорю #cursos — только если пользователь не просил убрать анимации
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.hb-home) {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hb-home .hb-btn {
+    transition: none;
+  }
+}

@@ -2,23 +2,7 @@
 
 class Web::HomeController < Web::ApplicationController
   def index
-    @languages_in_development = Language.with_progress(:in_development).includes(:current_version)
-    @language_members_by_language = current_user.language_members.index_by(&:language_id)
-
-    @js_course = Language.find_by slug: 'javascript'
-    @html_course = Language.find_by slug: 'html'
-
-    @user = User::SignUpForm.new
-
-    @blog_posts = BlogPost.published.includes(:cover_attachment).last(3)
-
-    # TODO: need refactor it
-    scope = Language.all.includes(:current_version)
-    @languages_links_by_slug = scope.each_with_object({}) do |item, acc|
-      acc[item.slug.to_sym] = view_context.link_to(item, language_path(item.slug))
-    end
-
-    @categories = Language::Category.all
+    @catalog = HomeCatalog.new
 
     completed_languages = Language.with_progress(:completed).with_locale.ordered
     infos = Language::Version::Info.with_locale.where(language: completed_languages).includes(:language)
@@ -26,8 +10,6 @@ class Web::HomeController < Web::ApplicationController
     item_builders = completed_languages.map { |l| CourseSchema.to_builder(l, infos_by_language.fetch(l.id)) }
 
     @builder = ItemListSchema.to_builder(item_builders)
-
-    gon.languages_for_widget = helpers.completed_languages.map(&:name)
 
     seo_tags = {
       title: t('.title'),
@@ -41,7 +23,7 @@ class Web::HomeController < Web::ApplicationController
         title: t('.title'),
         type: 'website',
         description: t('.meta_description'),
-        site_name: 'Code Basics',
+        site_name: 'Códica Básicos',
         url: root_url,
         image: view_context.asset_url('logo.png')
       }

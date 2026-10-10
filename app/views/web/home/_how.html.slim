@@ -1,0 +1,12 @@
+section#como-funciona.hb-section.hb-section--subtle aria-labelledby="how-title"
+  .hb-wrap
+    .hb-sec-head
+      h2#how-title = t('.title')
+      p = t('.subtitle')
+    ol.hb-steps
+      - %w[theory practice check].each do |step|
+        li.hb-step
+          .hb-step__icon aria-hidden="true" = home_step_icon(step)
+          .hb-step__label = t(".steps.#{step}.label")
+          h3.hb-step__title = t(".steps.#{step}.title")
+          p = t(".steps.#{step}.text")
