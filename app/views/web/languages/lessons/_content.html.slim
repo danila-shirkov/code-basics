@@ -38,10 +38,3 @@
       = link_to language_lesson_path(resource_language.slug, @lesson_version.next_lesson.slug), class: 'd-inline-block text-black text-decoration-none' do
         span.me-2 = t('.next')
         span →
-
-hr.my-4
-
-.small.text-muted
-  = t('.issues')
-  '
-  = link_to "#{ENV.fetch("BASE_DOMAIN")}/errores", "#{ENV.fetch("BASE_DOMAIN")}/errores" ,target: '_blank', rel: 'nofollow noopener'
