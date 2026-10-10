@@ -308,34 +308,6 @@
     font-weight: 600;
   }
 
-  // ---------- 2. Цифры ----------
-
-  .hb-stats {
-    padding: 30px 0 60px;
-  }
-
-  .hb-stats__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    text-align: center;
-  }
-
-  .hb-stat {
-    strong {
-      display: block;
-      font-size: 46px;
-      font-weight: 700;
-      line-height: 55px;
-      color: var(--hb-brand);
-    }
-
-    span {
-      font-size: 14px;
-      color: var(--hb-ink-muted);
-    }
-  }
-
   // ---------- 3. Курсы ----------
 
   .hb-group + .hb-group {
@@ -695,14 +667,8 @@
     .hb-cards,
     .hb-cards--2,
     .hb-cards--4,
-    .hb-steps,
-    .hb-stats__grid {
+    .hb-steps {
       grid-template-columns: 1fr;
-    }
-
-    .hb-stat strong {
-      font-size: 38px;
-      line-height: 46px;
     }
 
     .hb-group__head {

@@ -29,11 +29,6 @@ class HomeCatalogTest < ActiveSupport::TestCase
     assert_equal expected, course.lessons_count
   end
 
-  test 'lessons total is the sum over the listed courses' do
-    assert_equal @catalog.courses.sum { |course| course.lessons_count.to_i }, @catalog.lessons_total
-    assert_equal @catalog.courses.size, @catalog.courses_count
-  end
-
   test 'first lesson is the one with the minimal natural_order, as on the course page' do
     course = @catalog.courses.find { |item| item.slug == 'javascript' }
 

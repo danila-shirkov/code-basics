@@ -24,9 +24,10 @@
           .card.border-0
             .card-body.pt-2.pb-0
               .alert.alert-info.small.my-2
+                / NOTE: страницы codica.la/comunidad нет; ведём на контакты
                 span.align-baseline = t('.if_stuck')
                 '
-                = link_to t('.community'), "#{ENV.fetch("BASE_DOMAIN")}/comunidad" , target: '_blank', class: 'align-baseline', rel: :noopener
+                = link_to t('.community'), "#{ENV.fetch('BASE_DOMAIN')}/contactos", target: '_blank', class: 'align-baseline', rel: :noopener
               = render 'web/deps/disqus', lesson: @lesson, title: @title
 
         .tab-pane.fade.overflow-auto.x-h-md-100#navigation-tab(role="tabpanel")

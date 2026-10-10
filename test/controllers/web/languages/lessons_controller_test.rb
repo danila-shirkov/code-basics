@@ -15,6 +15,23 @@ class Web::Languages::LessonsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'show fixes links to codica.la pages that do not exist' do
+    @info.update!(
+      theory: '[guía](https://codica.la/guides/encoding) y [curso](https://codica.la/courses/java-poo-basics)',
+      tips: ['[hello](https://codica.la/blog/mi-gente-me-entiende-la-historia-de-la-frase-hello-world-y-sus-analogos)', 'ok']
+    )
+    get language_lesson_url(@language.slug, @lesson.slug)
+    assert_response :success
+
+    assert_select ".hexlet-basics-content a[href='https://codica.la/guias/encoding']", 1
+    assert_select '.hexlet-basics-content a[href*="/guides/"]', 0
+    assert_select '.hexlet-basics-content a[href*="/courses/"]', 0
+    assert_not_includes response.body, 'mi-gente-me-entiende'
+    assert_not_includes response.body, 'codica.la/comunidad'
+    assert_not_includes response.body, 'codica.la/errores'
+    assert_includes response.body, 'codica.la/contactos'
+  end
+
   test 'show amp redirects to the regular page' do
     get language_lesson_url(@language.slug, @lesson.slug, format: :amp)
     assert_response :moved_permanently

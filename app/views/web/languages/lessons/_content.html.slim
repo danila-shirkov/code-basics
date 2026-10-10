@@ -5,20 +5,21 @@
 .hexlet-basics-content
   h1.h3.font-weight-bold
     = "#{resource_language.current_version}: #{@info.name}"
-  == markdown2html(@info.theory, options)
+  == markdown2html(LessonLinks.rewrite(@info.theory), options)
   - if @info.instructions
     h2.h4.font-weight-bold = t('.instructions')
-    == markdown2html(@info.instructions, options)
+    == markdown2html(LessonLinks.rewrite(@info.instructions), options)
     .my-4
       - t('.common_questions').each do |data|
         details.mt-1.border.rounded
           summary.p-2 = data[:question]
           .px-2.pt-2 == markdown2html data[:answer]
 
-  - if @info.tips.any?
+  - tips = LessonLinks.rewrite_all(@info.tips)
+  - if tips.any?
     h2.h5.font-weight-bold.mt-4 = t('.tips')
     ul.ps-4
-      - @info.tips.each do |tip|
+      - tips.each do |tip|
         li == markdown2html(tip, options)
   - if @info.definitions.any?
     h2.h5.font-weight-bold = t('.definitions')
@@ -26,7 +27,7 @@
       - @info.definitions.each do |definition|
         li
           / NOTE: add different separators for different locales
-          p == markdown2html("#{definition['name']}#{t('.separator')}#{definition['description']}")
+          p == markdown2html(LessonLinks.rewrite("#{definition['name']}#{t('.separator')}#{definition['description']}"))
 
   .mb-3.d-flex.justify-content-center
     .me-4

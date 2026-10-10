@@ -146,12 +146,6 @@ es:
         title: Empieza hoy tu primera lección
         text: Crea tu cuenta gratis y avanza a tu ritmo.
         button: Crear cuenta gratis
-      stats:
-        label: Códica Básicos en cifras
-        courses: cursos de programación
-        lessons: lecciones con práctica
-        free_value: "100%"
-        free: gratuito
       index:
         reviews: Reseñas
         all_reviews: Todas las reseñas
@@ -277,13 +271,13 @@ es:
         show:
           navigation: Navegación
           show_full_version: El reactor de código está disponible en la versión principal →
-          if_stuck: Si te encuentras con dificultades y no sabes qué hacer, pregunta en nuestra gran y amigable
+          if_stuck: Si te encuentras con dificultades y no sabes qué hacer, escríbenos en la página de
           discuss: Discusión
           lesson: Lección
           only_for_signed_in_users: Este ejercicio solo está disponible para usuarios autenticados.
           please_sign_in: Por favor, inicia sesión. Esto es necesario para hacer un seguimiento del progreso en las lecciones. Si aún no tienes una cuenta, este es el momento perfecto para crear una.
           sign_in: Iniciar sesión
-          community: comunidad
+          community: contactos
         lesson_tab:
           to_home_title: Inicio
           breadcrumb: Migas de pan

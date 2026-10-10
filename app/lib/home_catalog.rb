@@ -49,14 +49,6 @@ class HomeCatalog
     @courses ||= groups.flat_map(&:courses)
   end
 
-  def courses_count
-    courses.size
-  end
-
-  def lessons_total
-    courses.sum { |course| course.lessons_count.to_i }
-  end
-
   # Курс для кнопки hero: Python, а если его нет (или в нём нет уроков) — первый курс, в котором есть первый урок
   def start_course
     courses.find { |course| course.slug == START_SLUG && course.first_lesson_slug } || courses.find(&:first_lesson_slug)

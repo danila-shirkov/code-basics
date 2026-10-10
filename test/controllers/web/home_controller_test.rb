@@ -127,14 +127,6 @@ class Web::HomeControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'landing numbers come from the database' do
-    get root_url
-    catalog = HomeCatalog.new
-
-    assert_select '.hb-stat strong', text: catalog.courses_count.to_s
-    assert_select '.hb-stat strong', text: catalog.lessons_total.to_s
-  end
-
   test 'landing in Spanish: copy, metadata, brand and links to codica.la' do
     I18n.with_locale(:es) do
       get root_url
