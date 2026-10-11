@@ -21,6 +21,11 @@ class ExternalLinks
     'hola@codica.la'
   end
 
+  # Репозиторий самой платформы Códica Básicos (форк Hexlet Basics с испанской локализацией)
+  def self.platform_source_curl
+    'https://github.com/danila-shirkov/code-basics'
+  end
+
   def self.source_code_curl
     'https://github.com/hexlet-basics'
   end

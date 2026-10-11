@@ -284,16 +284,9 @@ es:
         navigation_tab:
     pages:
       about:
-        title: Acerca del proyecto
-        meta_description: |
-          Code Basics: lecciones interactivas de alta calidad sobre fundamentos de programación de forma gratuita, para todos.
-        projects_goal: |
-          El objetivo de Code Basics es proporcionar lecciones interactivas de alta calidad sobre fundamentos de programación de forma gratuita, para todos.
-        extended_credits: |
-          Idea, plan de estudios, plataforma: Kirill Mokevnin. Lecciones (9 módulos básicos): Rahim Davletkaliyev y Natalia Bass. Extensiones y adaptación: Kirill Mokevnin, Ulugbek Tuichiev, Alexey Pyltin y otros miembros de la comunidad Hexlet.
-        contributions: |
-          El código fuente de la plataforma Code Basics, todas las lecciones y ejercicios están disponibles en GitHub. Puedes contribuir al proceso de mejora de las lecciones, corregir imprecisiones y expandir los cursos a otros lenguajes de programación.
-        source_code: Código fuente
+        title: ¿Qué es Códica Básicos?
+        meta_description: Códica Básicos es una plataforma gratuita y de código abierto para aprender programación en español, creada por estudiantes de Códica.
+        source_code: Código fuente en GitHub
       privacy:
         meta_description: Política de privacidad de Code Basics
         title: Política de privacidad

@@ -4,6 +4,7 @@
 footer.bg-dark.text-light.flex-shrink-0
   .container-xl.pt-5.pb-3
     ul.list-inline.mb-3
+      li.list-inline-item.me-4 = link_to t('.about_project'), page_path(:about), class: 'link-light text-decoration-none'
       li.list-inline-item.me-4 = link_to t('.codica'), ENV.fetch('BASE_DOMAIN'), class: 'link-light text-decoration-none'
       li.list-inline-item.me-4 = link_to t('.careers'), "#{ENV.fetch('BASE_DOMAIN')}/carreras", class: 'link-light text-decoration-none'
       li.list-inline-item.me-4 = link_to t('.about_us'), "#{ENV.fetch('BASE_DOMAIN')}/nosotros", class: 'link-light text-decoration-none'
