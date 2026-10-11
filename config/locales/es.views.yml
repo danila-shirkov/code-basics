@@ -287,19 +287,6 @@ es:
         title: ¿Qué es Códica Básicos?
         meta_description: Códica Básicos es una plataforma gratuita y de código abierto para aprender programación en español, creada por estudiantes de Códica.
         source_code: Código fuente en GitHub
-      privacy:
-        meta_description: Política de privacidad de Code Basics
-        title: Política de privacidad
-      tos:
-        title: Términos de uso de la plataforma educativa
-        meta_description: Términos de uso de la plataforma educativa Code Basics
-      authors:
-        title: Para los autores
-        meta_description: |
-          Code Basics es un proyecto abierto en el que cualquier persona puede convertirse en autor de cursos. Aquí hay una lista de pasos que debes seguir para hacerlo.
-      cookie_policy:
-        title: Política de cookies
-        meta_description: Política de cookies
     account:
       profiles:
         edit:

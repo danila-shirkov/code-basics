@@ -3,10 +3,14 @@
 require 'test_helper'
 
 class Web::PagesControllerTest < ActionDispatch::IntegrationTest
-  %w[tos about privacy authors].each do |slug|
-    test slug do
-      get page_url(slug)
-      assert_response :success
+  test 'about' do
+    get page_url(:about)
+    assert_response :success
+  end
+
+  %w[privacy tos cookie_policy authors].each do |slug|
+    test "#{slug} is removed: there is nothing to show on it" do
+      assert_raises(ActionController::RoutingError) { get "/pages/#{slug}" }
     end
   end
 

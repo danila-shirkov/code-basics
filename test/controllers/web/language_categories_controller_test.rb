@@ -3,9 +3,8 @@
 require 'test_helper'
 
 class LanguageCategoriesControllerTest < ActionDispatch::IntegrationTest
-  test 'should get index' do
-    get language_categories_url
-    assert_response :success
+  test 'the list of categories is removed: it was a developer placeholder' do
+    assert_raises(ActionController::RoutingError) { get '/language_categories' }
   end
 
   test 'should get show' do

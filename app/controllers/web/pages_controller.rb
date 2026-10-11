@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 class Web::PagesController < Web::ApplicationController
-  PAGES = %w[about
-             cookie_policy
-             privacy
-             authors
-             tos].freeze
+  PAGES = %w[about].freeze
 
   def show
     @page = params[:id]

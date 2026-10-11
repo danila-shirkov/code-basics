@@ -3,9 +3,8 @@
 require 'test_helper'
 
 class Web::BlogPostsControllerTest < ActionDispatch::IntegrationTest
-  test 'should get index' do
-    get blog_posts_url
-    assert_response :success
+  test 'the list of posts is removed: there are no posts to show' do
+    assert_raises(ActionController::RoutingError) { get '/blog_posts' }
   end
 
   test 'should get show' do

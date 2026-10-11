@@ -23,7 +23,6 @@ en:
             Language %{language} is under development.
             You can help send a pull request with new lessons or
             supplement those that already exist <a href="%{link_to_repo}" target="_blank" rel="noopener">%{link_to_repo}</a>.
-            We have prepared guidelines for writing <a href="%{link_to_recommendations}" target="_blank" rel="noopener">at the link</a>
         lessons:
           show:
             lesson_not_found: Lesson not found. Please, try another lesson.

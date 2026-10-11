@@ -228,19 +228,6 @@ en:
         extended_credits: "Idea, syllabus, platform: Kirill Mokevnin. Core lessons: Rakhim Davletkaliyev, Natalia Bass. Extensions and adaptation: Kirill Mokevnin, Ulugbek Tuychiev, Aleksey Pyltsyn and other Hexlet community members."
         contributions: Source code of Code Basics platform, all lessons and exercisees is available on GitHub. You can contribute by improving lessons, fixing mistakes and extending the content to cover more programming languages.
         source_code: Source code
-      privacy:
-        meta_description: Code Basics Privacy Policy
-        title: Privacy Policy
-      tos:
-        title: Terms of Service
-        meta_description: Terms of Service of the Code Basics Platform
-      cookie_policy:
-        title: Cookie Policy
-        meta_description: Политика в отношении файлов cookie
-      authors:
-        title: How to become an author?
-        meta_description: |
-          Code Basics is open source. Everyone can be an author. Here is some simple steps to start.
 
     account:
       profiles:

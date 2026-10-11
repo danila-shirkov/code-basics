@@ -21,7 +21,6 @@ es:
           language_in_development_html: |
             El curso de %{language} aún está en desarrollo.
             Puedes ayudar enviando una solicitud de extracción con nuevas lecciones o complementando las que ya existen <a href="%{link_to_repo}" target="_blank" rel="noopener">%{link_to_repo}</a>.
-            Hemos preparado recomendaciones para escribir textos <a href="%{link_to_recommendations}" target="_blank" rel="noopener">en este enlace</a>.
         lessons:
           show:
             lesson_not_found: ¡No se encontró la lección, pero puedes comenzar otras!

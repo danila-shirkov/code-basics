@@ -49,6 +49,12 @@ AppHost.served_locales.each do |current_locale|
 
     SitemapGenerator::Sitemap.create do
       add root_path(locale: AppHost.locale_for_url(current_locale)), changefreq: :daily, priority: 1.0
+      add page_path(:about, locale: AppHost.locale_for_url(current_locale)), changefreq: :monthly, priority: 0.5
+
+      # только категории, в которых есть завершённые курсы (страница пустой категории ничего не покажет)
+      Language::Category.where(id: Language.with_progress(:completed).select(:category_id)).find_each do |category|
+        add language_category_path(category.slug, locale: AppHost.locale_for_url(current_locale)), changefreq: :weekly, priority: 0.7
+      end
 
       group(filename: :languages) do
         scope = Language.with_progress(:completed).joins(current_version: :infos)

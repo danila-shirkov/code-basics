@@ -208,19 +208,6 @@ ru:
         contributions: |
           Исходный код платформы Code Basics, всех уроков и упражнений доступен на GitHub. Вы можете поучаствовать в процессе улучшения уроков, исправления неточностей и расширения курсов на другие языки программирования.
         source_code: Исходный код
-      privacy:
-        meta_description: Политика конфиденциальности Code Basics
-        title: Политика конфиденциальности
-      tos:
-        title: Условия использования образовательной платформы
-        meta_description: Условия использования образовательной платформы Code Basics
-      authors:
-        title: Автору
-        meta_description: |
-          Code Basics открытый проект, в котором любой человек может стать автором курсов. Вот список шагов, которые нужно выполнить для этого.
-      cookie_policy:
-        title: Cookie Policy
-        meta_description: Cookies Policy
 
 
     account:
