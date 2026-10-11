@@ -3,7 +3,11 @@
 
 footer.bg-dark.text-light.flex-shrink-0
   .container-xl.pt-5.pb-3
-    .row.row-cols-1.row-cols-sm-2.row-cols-md-3.row-cols-lg-4
+    ul.list-inline.mb-3
+      li.list-inline-item.me-4 = link_to t('.codica'), ENV.fetch('BASE_DOMAIN'), class: 'link-light text-decoration-none'
+      li.list-inline-item.me-4 = link_to t('.careers'), "#{ENV.fetch('BASE_DOMAIN')}/carreras", class: 'link-light text-decoration-none'
+      li.list-inline-item.me-4 = link_to t('.about_us'), "#{ENV.fetch('BASE_DOMAIN')}/nosotros", class: 'link-light text-decoration-none'
+      li.list-inline-item = link_to t('.contact'), "#{ENV.fetch('BASE_DOMAIN')}/contactos", class: 'link-light text-decoration-none'
     hr
     .d-flex
       p.mb-2.me-4.flex-shrink-0 = t('.hexlet_title', year: Time.zone.today.year)
@@ -19,5 +23,3 @@ footer.bg-dark.text-light.flex-shrink-0
           span.ms-3.ms-sm-5
             a.rounded-circle target="_blank" rel="noopener noreferrer" href=ExternalLinks.hexlet_instagram_curl aria-label="Instagram"
               span.bi.bi-instagram.text-white-50
-
-

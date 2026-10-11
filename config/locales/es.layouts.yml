@@ -11,7 +11,11 @@ es:
     shared:
       language_menu:
         in_development: En desarrollo
+        all_courses: Todos los cursos
       nav:
+        product: Básicos
+        codica: Códica
+        external_title: Se abre en codica.la
         blog: Blog
         about_platform: Acerca de la plataforma
         about_code_basics: Acerca de Code Basics
@@ -32,6 +36,10 @@ es:
         admin: Administración
         reviews: Reseñas
       footer:
+        codica: Códica
+        careers: Carreras
+        about_us: Nosotros
+        contact: Contacto
         useful: Útil
         blog: Blog
         community: Comunidad

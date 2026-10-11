@@ -1,8 +1,9 @@
 .navbar.navbar-expand-md.navbar-light
   .container-fluid
-    /= link_to root_path, class: 'navbar-brand me-md-4' do
-    = link_to ENV.fetch('BASE_DOMAIN'), class: 'navbar-brand me-md-4' do
-      = image_tag 'logo_codica.svg', width: 60, alt: 'Códica Básicos', valign: 'absmiddle'
+    / NOTE: логотип с подписью «Básicos» ведёт на главную этого сайта; путь на codica.la — отдельные ссылки с ↗ ниже и в подвале
+    = link_to root_path, class: 'navbar-brand me-md-4 d-flex align-items-center gap-2' do
+      = image_tag 'logo_codica.svg', width: 60, alt: 'Códica', valign: 'absmiddle'
+      span.fw-semibold.text-primary = t('.product')
 
     button.navbar-toggler(
       type='button' data-bs-toggle='collapse'
@@ -18,11 +19,17 @@
             = t('.courses')
           = render 'layouts/shared/language_menu'
 
-        li.nav-item.me-2
-          = link_to t('.career'), "#{ENV.fetch('BASE_DOMAIN')}/carreras", class: 'nav-link text-dark'
+        / NOTE: на странице урока шапка компактная (логотип, «Cursos», вход): ничто не уводит с задания
+        - unless controller_path == 'web/languages/lessons'
+          li.nav-item.me-2
+            = link_to "#{ENV.fetch('BASE_DOMAIN')}/carreras", class: 'nav-link text-dark', title: t('.external_title') do
+              = t('.career')
+              span.ms-1.small.text-muted aria-hidden='true' ↗
 
-        li.nav-item.me-2
-          = link_to t('.about_us'), "#{ENV.fetch('BASE_DOMAIN')}/nosotros", class: 'nav-link text-dark'
+          li.nav-item.me-2
+            = link_to ENV.fetch('BASE_DOMAIN'), class: 'nav-link text-dark', title: t('.external_title') do
+              = t('.codica')
+              span.ms-1.small.text-muted aria-hidden='true' ↗
 
       ul.navbar-nav
         - if current_user.guest?

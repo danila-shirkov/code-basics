@@ -1,4 +1,8 @@
 .dropdown-menu class=language_menu_min_width_class(@language_menu_data[:columns_count])
+  = link_to t('.all_courses'), root_path(anchor: 'cursos'), class: 'dropdown-item py-2 fw-semibold'
+  - (@language_categories || []).each do |category|
+    = link_to category, language_category_path(category.slug), class: 'dropdown-item py-2'
+  hr.dropdown-divider
   .row class="row-cols-#{@language_menu_data[:columns_count]}"
     - @language_menu_data[:completed].each do |info|
       .col
