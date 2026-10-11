@@ -7,14 +7,15 @@ class Web::NavigationTest < ActionDispatch::IntegrationTest
     @codica = ENV.fetch('BASE_DOMAIN')
   end
 
-  test 'logo with the product name leads to the home page of this site, not to codica.la' do
+  test 'the name Códica Básicos is text, not a picture, and leads to the home page of this site, not to codica.la' do
     I18n.with_locale(:es) do
       get root_url
 
       assert_select '.navbar a.navbar-brand' do |links|
         assert_equal root_path, links.first['href']
-        assert_includes links.first.text, 'Básicos'
+        assert_equal 'Códica Básicos', links.first.text.strip
       end
+      assert_select '.navbar a.navbar-brand img', 0
     end
   end
 

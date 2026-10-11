@@ -1,9 +1,7 @@
 .navbar.navbar-expand-md.navbar-light
   .container-fluid
-    / NOTE: логотип с подписью «Básicos» ведёт на главную этого сайта; путь на codica.la — отдельные ссылки с ↗ ниже и в подвале
-    = link_to root_path, class: 'navbar-brand me-md-4 d-flex align-items-center gap-2' do
-      = image_tag 'logo_codica.svg', width: 60, alt: 'Códica', valign: 'absmiddle'
-      span.fw-semibold.text-primary = t('.product')
+    / NOTE: название «Códica Básicos» (текстом, без картинки) ведёт на главную этого сайта; путь на codica.la — отдельные ссылки с ↗ ниже и в подвале
+    = link_to t('.brand'), root_path, class: 'navbar-brand me-md-4 fw-semibold text-primary'
 
     button.navbar-toggler(
       type='button' data-bs-toggle='collapse'
