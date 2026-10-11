@@ -11,24 +11,13 @@
       ul.nav.nav-tabs.justify-content-center.small data-bs-toggle="tabs" role="tablist"
         li.nav-item
           a.nav-link.active.border-top-0.rounded-0.text-muted href="#lesson-tab" data-bs-toggle="tab" role="tab" = t('.lesson')
-        li.nav-item
-          a.nav-link.border-top-0.rounded-0.text-muted href="#discuss-tab" data-bs-toggle="tab" role="tab" = t('.discuss')
+        / NOTE: вкладка «Discusión» (Disqus, partial web/deps/disqus) скрыта: показать там пока нечего; вернуть её и tab-pane #discuss-tab можно из истории git
         li.nav-item
           a.nav-link.border-top-0.rounded-0.text-muted href="#navigation-tab" data-bs-toggle="tab" role="tab" = t('.navigation')
 
       .tab-content.overflow-hidden.x-h-md-100
         .tab-pane.fade.overflow-auto.x-h-md-100.active.show#lesson-tab(role="tabpanel")
           = render 'lesson_tab'
-
-        .tab-pane.fade.overflow-auto.x-h-md-100#discuss-tab(role="tabpanel")
-          .card.border-0
-            .card-body.pt-2.pb-0
-              .alert.alert-info.small.my-2
-                / NOTE: страницы codica.la/comunidad нет; ведём на контакты
-                span.align-baseline = t('.if_stuck')
-                '
-                = link_to t('.community'), "#{ENV.fetch('BASE_DOMAIN')}/contactos", target: '_blank', class: 'align-baseline', rel: :noopener
-              = render 'web/deps/disqus', lesson: @lesson, title: @title
 
         .tab-pane.fade.overflow-auto.x-h-md-100#navigation-tab(role="tabpanel")
           .card.border-0

@@ -29,7 +29,8 @@ class Web::Languages::LessonsControllerTest < ActionDispatch::IntegrationTest
     assert_not_includes response.body, 'mi-gente-me-entiende'
     assert_not_includes response.body, 'codica.la/comunidad'
     assert_not_includes response.body, 'codica.la/errores'
-    assert_includes response.body, 'codica.la/contactos'
+    assert_select '#discuss-tab', 0
+    assert_not_includes response.body, 'disqus'
   end
 
   test 'show amp redirects to the regular page' do
