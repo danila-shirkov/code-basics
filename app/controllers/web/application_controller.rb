@@ -20,6 +20,8 @@ class Web::ApplicationController < ApplicationController
              })
   end
 
+  before_action :expire_legacy_session_cookie
+
   before_action do
     @language_categories = Language::Category.all
     @language_menu_data = build_language_menu_data
@@ -31,6 +33,16 @@ class Web::ApplicationController < ApplicationController
   end
 
   private
+
+  # NOTE: до 2026-10-09 cookie сессии ставилась с domain=.codica.la, теперь только на хост (см. config/initializers/session_store.rb).
+  # У тех, кто заходил раньше, в браузере осталась старая cookie с тем же именем: браузер шлёт обе, старую первой, Rails читает первую
+  # (с подписью прошлого SECRET_KEY_BASE), сессия оказывается пустой, и вход «не держится». Старую cookie стираем.
+  def expire_legacy_session_cookie
+    key = Rails.application.config.session_options[:key]
+    return if request.domain.blank? || request.headers['Cookie'].to_s.scan(/(?:\A|;\s*)#{Regexp.escape(key)}=/).size < 2
+
+    response.headers['Set-Cookie'] = Rack::Utils.add_remove_cookie_to_header(response.headers['Set-Cookie'], key, domain: ".#{request.domain}", path: '/')
+  end
 
   def build_language_menu_data
     languages_multicolumns_treshold = 10

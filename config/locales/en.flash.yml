@@ -13,6 +13,7 @@ en:
       google_auth:
         one_tap:
           success: You have signed in successfully. You can start learning now.
+          error: We could not sign you in. Check your email and password.
           failure: We couldn't get data from Google! Requires setting up your Google account!
       languages:
         show:
@@ -40,5 +41,8 @@ en:
           success: A password recovery instruction was sent to your email.
           error: We could not send the email right now. Please try again later.
       passwords:
+        edit:
+          invalid_token: The password reset link is no longer valid. Please request a new one.
         update:
           success: Password has been changed. Please, login with your new password.
+          error: We could not change the password. Please check the data and try again.

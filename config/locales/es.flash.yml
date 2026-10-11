@@ -30,7 +30,8 @@ es:
           success: ¡Bienvenido! Elige un curso y sumérgete en el mundo del desarrollo
       sessions:
         create:
-          success: El interior es mejor que el exterior. Guardamos tu progreso y te guiamos hacia la luz
+          success: Has iniciado sesión. ¡Buen aprendizaje!
+          error: No pudimos iniciar tu sesión. Revisa tu correo y tu contraseña.
       auth:
         callback:
           success: ¡Bienvenido! Es hora de aprender un poco -)
@@ -39,8 +40,11 @@ es:
           success: Hemos enviado un correo electrónico con instrucciones para restablecer tu contraseña
           error: No pudimos enviar el correo en este momento. Inténtalo de nuevo más tarde o escríbenos.
       passwords:
+        edit:
+          invalid_token: El enlace para cambiar la contraseña ya no es válido. Solicita uno nuevo.
         update:
-          success: Contraseña actualizada. Puedes iniciar sesión con tu nueva contraseña.
+          success: Contraseña actualizada. Ahora inicia sesión con tu nueva contraseña.
+          error: No pudimos cambiar la contraseña. Revisa los datos e inténtalo de nuevo.
       account:
         profiles:
           update:
