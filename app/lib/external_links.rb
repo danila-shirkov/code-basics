@@ -9,7 +9,7 @@ class ExternalLinks
     hexlet_frontend
     hexlet_layout_designer
     hexlet_profession
-  ]
+  ].freeze
 
   HEXLET_CURLS.each do |method_name|
     define_singleton_method("#{method_name}_curl") do
