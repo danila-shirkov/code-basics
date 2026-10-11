@@ -35,12 +35,9 @@ Configus.build Rails.env do
     end
 
     mailer do
-      from 'codica.latam.services@gmail.com'
-
-      smtp do
-        username ENV.fetch('SPARKPOST_SMTP_USERNAME', nil)
-        password ENV.fetch('SPARKPOST_SMTP_PASSWORD', nil)
-      end
+      # Адрес домена codica.la: в его SPF есть SendPulse, а письма «от gmail.com» через стороннего провайдера отклоняются или попадают в спам.
+      # Настройки SMTP (логин, пароль, сервер) — в config/environments/production.rb, из переменных SMTP_*
+      from ENV.fetch('MAIL_FROM', 'no-contestar@codica.la')
     end
 
     sitemap do

@@ -71,14 +71,20 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
+  # Логин, пароль и сервер — из переменных окружения (пароль в репозиторий не кладём); значения по умолчанию — SendPulse (smtp-pulse.com:587, TLS).
+  # Логин SMTP (аккаунт SendPulse) и адрес «от кого» (MAIL_FROM, домен codica.la) — разные адреса: SendPulse отклоняет отправителя @gmail.com
+  # («554 Sender domain is not valid»).
+  # Таймауты нужны, потому что письмо сброса пароля уходит прямо в запросе (UserService.reset_password!, deliver_now).
   config.action_mailer.smtp_settings = {
-    user_name: 'no-contestar@codica.la',
+    user_name: ENV.fetch('SMTP_USERNAME', 'codica.latam.services@gmail.com'),
     password: ENV.fetch('SMTP_PASSWORD', nil),
-    address: 'smtp-pulse.com',
-    port: 587,
+    address: ENV.fetch('SMTP_ADDRESS', 'smtp-pulse.com'),
+    port: ENV.fetch('SMTP_PORT', 587).to_i,
     domain: 'codica.la',
     format: :html,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    open_timeout: 5,
+    read_timeout: 10
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

@@ -10,10 +10,19 @@ class Web::RemindPasswordsController < Web::ApplicationController
 
     if @remind_password_form.valid?
       user = @remind_password_form.user
-      UserService.reset_password!(user)
 
-      f(:success)
-      redirect_to root_path
+      begin
+        UserService.reset_password!(user)
+      rescue *UserService::MAIL_ERRORS => e
+        Rails.logger.error("reset password mail for user #{user.id} was not sent: #{e.class}: #{e.message}")
+        Sentry.capture_exception(e)
+
+        f(:error, now: true)
+        render :new, status: :service_unavailable
+      else
+        f(:success)
+        redirect_to root_path
+      end
     else
       render :new
     end

@@ -37,6 +37,7 @@ es:
       remind_passwords:
         create:
           success: Hemos enviado un correo electrónico con instrucciones para restablecer tu contraseña
+          error: No pudimos enviar el correo en este momento. Inténtalo de nuevo más tarde o escríbenos.
       passwords:
         update:
           success: Contraseña actualizada. Puedes iniciar sesión con tu nueva contraseña.
